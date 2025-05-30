@@ -6,12 +6,13 @@ phases:
       python: 3.8
     commands:
       - echo "Downloading Conformity Template Scanner binary..."
-      - curl -L -o scanner https://github.com/awslabs/cloud-one-conformity-template-scanner/releases/latest/download/conformity-template-scanner-linux-x86_64
-      - chmod +x scanner
+      - curl -L -o scanner.tar.gz https://github.com/awslabs/cloud-one-conformity-template-scanner/releases/latest/download/conformity-template-scanner-linux.tar.gz
+      - tar -xzf scanner.tar.gz
+      - chmod +x conformity-template-scanner
   build:
     commands:
       - echo "Running security scan..."
-      - ./scanner scan -f template.yaml -o results.json || exit 1
+      - ./conformity-template-scanner scan -f template.yaml -o results.json || exit 1
 
 artifacts:
   files:
