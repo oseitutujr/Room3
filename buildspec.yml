@@ -1,0 +1,15 @@
+version: 0.2
+ 
+phases:
+  install:
+    runtime-versions:
+      python: 3.8
+    commands:
+      - pip install conformity-template-scanner
+  build:
+    commands:
+      - conformity-template-scanner scan -f main.tf -o results.json
+ 
+artifacts:
+  files:
+    - results.json
