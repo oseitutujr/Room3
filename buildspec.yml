@@ -1,15 +1,18 @@
 version: 0.2
- 
+
 phases:
   install:
     runtime-versions:
       python: 3.8
     commands:
-      - pip install conformity-template-scanner
+      - echo "Downloading Conformity Template Scanner binary..."
+      - curl -L -o scanner https://github.com/awslabs/cloud-one-conformity-template-scanner/releases/latest/download/conformity-template-scanner-linux
+      - chmod +x scanner
   build:
     commands:
-      - conformity-template-scanner scan -f main.tf -o results.json
- 
+      - echo "Running security scan..."
+      - ./scanner scan -f template.yaml -o results.json || exit 1
+
 artifacts:
   files:
     - results.json
