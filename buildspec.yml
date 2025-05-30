@@ -6,7 +6,7 @@ phases:
       python: 3.8
     commands:
       - echo "Downloading Conformity Template Scanner binary..."
-      - curl -L -o scanner https://github.com/awslabs/cloud-one-conformity-template-scanner/releases/latest/download/conformity-template-scanner-linux
+      - curl -L -o scanner https://github.com/awslabs/cloud-one-conformity-template-scanner/releases/latest/download/conformity-template-scanner-linux-x86_64
       - chmod +x scanner
   build:
     commands:
